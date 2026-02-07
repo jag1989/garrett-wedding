@@ -32,6 +32,8 @@ watch(selectedGuestId, async (newId) => {
       .from('savethedate')
       .select('email, phone, weekend_accommodation')
       .eq('guest_id', newId)
+      .order('created_at', { ascending: false })
+      .limit(1)
       .maybeSingle()
       
     if (data) {
@@ -170,7 +172,11 @@ const updateAccommodation = async (choice: boolean) => {
         
         <div class="form-group" :class="{ 'has-error': errors.guest }">
           <label class="watercolor-label">Guest Name</label>
-          <select v-model="selectedGuestId" class="watercolor-select text-serif">
+          <select 
+            v-model="selectedGuestId" 
+            class="watercolor-select text-serif"
+            :class="{ 'is-placeholder': !selectedGuestId }"
+          >
             <option value="" disabled>Select your name</option>
             <option v-for="guest in guests" :key="guest.id" :value="guest.id">
               {{ guest.name }}
@@ -300,11 +306,33 @@ const updateAccommodation = async (choice: boolean) => {
 .watercolor-select {
   width: 100%;
   padding: 0.5rem;
+  padding-right: 2rem; /* Make room for custom arrow */
   border: none;
   border-bottom: 2px solid var(--color-sage-green);
-  background: transparent;
+  background-color: transparent;
   font-size: 1rem;
   margin-bottom: 1.5rem;
+  border-radius: 0; /* Important for iOS */
+  
+  /* Remove default arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  
+  /* Custom Arrow (Forest Green #3a4a3b) */
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233a4a3b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  background-size: 1em;
+  
+  /* Explicit colors to override iOS defaults */
+  color: var(--color-text-primary);
+  opacity: 1; /* Fix for disabled placeholder opacity on some browsers */
+
+  &.is-placeholder {
+    color: var(--color-sage-green);
+    opacity: 1;
+  }
   
   &:focus {
     outline: none;
