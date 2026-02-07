@@ -1,0 +1,75 @@
+@use "sass:color";
+
+/* 
+  Wedding Theme Colors 
+  Based on "Save the Date" Watercolor Aesthetic
+*/
+
+@font-face {
+  font-family: 'Beatrica';
+  src: url('/fonts/Beatrica.otf') format('opentype'),
+    url('/fonts/Beatrica.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  /* Primary Colors */
+  --color-forest-green: #3a4a3b;
+  --color-sage-green: #7d9685;
+  --color-pale-blue: #e8f1f2;
+  --color-soft-white: #fcfbf9;
+  --color-parchment: #f4f1ea;
+  --color-text-primary: #2c3e50;
+  --color-text-secondary: #5d6d7e;
+
+  /* Typography */
+  --font-script: 'Beatrica', 'Brush Script MT', cursive;
+  --font-serif: 'Cormorant Garamond', 'Times New Roman', serif;
+  --font-sans: 'Inter', sans-serif;
+}
+
+body {
+  background-color: var(--color-soft-white);
+  color: var(--color-text-primary);
+  font-family: var(--font-serif);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Typography Utilities */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-serif);
+  font-weight: normal;
+  color: var(--color-forest-green);
+}
+
+.font-script {
+  font-family: var(--font-script);
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Button Styles */
+.btn-primary {
+  background-color: var(--color-forest-green);
+  color: white;
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 4px;
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: color.adjust(#3a4a3b, $lightness: 10%);
+  }
+}

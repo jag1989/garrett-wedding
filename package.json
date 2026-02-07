@@ -16,10 +16,13 @@
     "type-check": "vue-tsc --build",
     "lint": "eslint . --fix --cache",
     "format": "prettier --write src/",
-    "deploy": "yarn run build && gh-pages -d dist"
+    "deploy": "yarn run build && gh-pages -d dist --cname thegarrettwedding.co.uk"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.95.3",
+    "lucide-vue-next": "^0.563.0",
     "pinia": "^3.0.3",
+    "sass": "^1.97.3",
     "vue": "^3.5.22",
     "vue-router": "^4.6.3"
   },
