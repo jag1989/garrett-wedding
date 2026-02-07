@@ -4,7 +4,7 @@
 <template>
   <header>
     <h2>14th August 2027</h2>
-    <h1 class="names">Katie & Jonathan</h1>
+    <h1 class="names">Katie & Jonathans Wedding</h1>
   </header>
 </template>
 
