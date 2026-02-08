@@ -155,6 +155,9 @@ const updateAccommodation = async (choice: boolean) => {
     <div class="main-content">
       <!-- Hero Section -->
       <section class="hero-section text-center">
+        <img src="/images/bird-flourish-1.png" class="header-flourish bird-1" alt="" />
+        <img src="/images/bird-flourish-2.png" class="header-flourish bird-2" alt="" />
+        <img src="/images/bird-flourish-3.png" class="header-flourish bird-3" alt="" />
         <h1 class="names font-script">Katie and Jonathan</h1>
         <div class="details text-serif">
           <p class="date">14th August 2027</p>
@@ -319,7 +322,8 @@ const updateAccommodation = async (choice: boolean) => {
 }
 
 .hero-section {
-  padding: 4rem 1rem;
+  padding: 6rem 1rem 4rem;
+  position: relative; /* For absolute positioning of flourishes */
   background-image: url('/path/to/watercolor-bg-placeholder.png'); /* To be added */
   background-size: cover;
   background-position: center;
@@ -328,6 +332,43 @@ const updateAccommodation = async (choice: boolean) => {
     font-size: 5rem;
     line-height: 1;
     margin-bottom: 1rem;
+  }
+  
+  .header-flourish {
+    position: absolute;
+    pointer-events: none;
+    z-index: 10;
+    height: auto;
+    /* Removed blend mode as we are fixing the image transparency directly */
+  }
+  
+  .bird-1 {
+    top: 2rem;
+    right: 15%;
+    width: 60px;
+    transform: rotate(10deg);
+  }
+  
+  .bird-2 {
+    top: 4rem;
+    left: 12%; /* Move to left side */
+    right: auto;
+    width: 55px;
+    /* Flip horizontally to face inward if needed, or just rotate */
+    transform: scaleX(-1) rotate(15deg); 
+  }
+  
+  .bird-3 {
+    top: 6rem;
+    right: 8%;
+    width: 40px;
+    transform: rotate(-5deg);
+  }
+  
+  @media (max-width: 768px) {
+    .bird-1 { width: 40px; right: 8%; top: 1rem; }
+    .bird-2 { width: 35px; left: 5%; right: auto; top: 2rem; }
+    .bird-3 { width: 30px; right: 20%; top: 4rem; }
   }
   
   .date {
