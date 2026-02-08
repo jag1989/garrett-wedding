@@ -11,7 +11,7 @@ export const guests: Guest[] = [
     { id: '4', name: 'Mr N & Mrs T Gorst', isWeekendGuest: true },
     { id: '5', name: 'Mr B & Mrs D Davies', isWeekendGuest: true },
     { id: '6', name: 'Mrs S & Mrs S Anderson-Garrett & Family', isWeekendGuest: true },
-    { id: '7', name: 'Miss F Garrett & Mr T', isWeekendGuest: true },
+    { id: '7', name: 'Miss F Garrett & Mr T Garvey', isWeekendGuest: true },
     { id: '8', name: 'Mr C & Mrs G Garrett', isWeekendGuest: true },
     { id: '9', name: 'Mr A & Mrs S Morris', isWeekendGuest: false },
     { id: '10', name: 'Mr G & Mrs B Morris', isWeekendGuest: false },
