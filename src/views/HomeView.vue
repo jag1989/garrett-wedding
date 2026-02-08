@@ -194,7 +194,7 @@ const updateAccommodation = async (choice: boolean) => {
 
         <div class="card-style">
           <p v-if="!isSubmitted" class="text-center text-serif" style="margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
-            Please provide your contact information so we can send you your formal invitation and keep you updated about our special day.
+            Please provide your contact information so we can send you your formal invitation and keep you updated about our special day
           </p>
 
           <section v-if="!isSubmitted" class="rsvp-section container">
@@ -246,38 +246,34 @@ const updateAccommodation = async (choice: boolean) => {
           <!-- Post-Submission Views -->
           <section v-else class="confirmation-section container text-center">
             <div v-if="showWeekendDetails" class="weekend-details">
-              <h2 class="font-script">Wonderful!</h2>
-              <p class="text-serif">We look forward to celebrating with you.</p>
+              <h2 class="font-script">Wonderful</h2>
+
+              <div v-if="accommodationSelection === null" class="accommodation-options">
+                <p class="info-text">Would you like the opportunity to stay with us for the weekend?</p>
+                <p class="info-text">There are a limited number of spots available, so please let us know if you'd like one. Dovecote Barns has 4 historic award-winning barns, each with 2-4 bedrooms with en-suite bathroom and a shared kitchen priced at <strong>£250 per room</strong> for the weekend (Friday - Monday).</p>
+                <p class="info-text">We will provide further weekend plans for those who wish to stay for the weekend. Whilst you do not need to stay until Monday, the price is inclusive of Monday.</p>
+                <p class="info-text">We will be allocating the rooms to keep parties together. If you'd like to take a look at the barns, you can do so here: <a href="https://www.dovecotebarnsyork.co.uk/our-accommodation/" target="_blank">Dovecote Barns</a></p>
+                <div class="button-group">
+                  <button @click="updateAccommodation(true)" class="btn-primary">Yes, please</button>
+                  <button @click="updateAccommodation(false)" class="btn-secondary">No, thank you</button>
+                </div>
+              </div>
               
-              <div class="weekend-card">
-                <h3 class="font-serif">Weekend Details</h3>
-                <p>We would love for you to stay with us for the weekend.</p>
-                <p><strong>Accommodation:</strong> On-site glamping is available.</p>
-                
-                <div v-if="accommodationSelection === null" class="accommodation-options">
-                  <p>Would you like to book a spot?</p>
-                  <div class="button-group">
-                    <button @click="updateAccommodation(true)" class="btn-primary">Yes, please</button>
-                    <button @click="updateAccommodation(false)" class="btn-secondary">No, thank you</button>
-                  </div>
-                </div>
-                
-                <div v-else class="accommodation-confirmation">
-                  <p v-if="accommodationSelection">
-                    Fantastic! We've marked you down for a spot.
-                  </p>
-                  <p v-else>
-                    No problem. Let us know if you change your mind.
-                  </p>
-                  <button @click="accommodationSelection = null" class="btn-secondary">
-                    Change Selection
-                  </button>
-                </div>
+              <div v-else class="accommodation-confirmation">
+                <p v-if="accommodationSelection">
+                  Fantastic! We've marked you down for a spot.
+                </p>
+                <p v-else>  
+                  No problem. Let us know if you change your mind.
+                </p>
+                <button @click="accommodationSelection = null" class="btn-secondary">
+                  Change Selection
+                </button>
               </div>
             </div>
 
             <div v-else class="thank-you">
-              <h2 class="font-script">Thank You</h2>
+              <h2 class="font-script">Wonderful</h2>
               <p class="text-serif">We will be in touch with more details soon</p>
             </div>
 
@@ -404,14 +400,6 @@ const updateAccommodation = async (choice: boolean) => {
     outline: none;
     border-bottom-color: var(--color-forest-green);
   }
-}
-
-.weekend-card {
-  background: white;
-  padding: 2rem;
-  margin-top: 2rem;
-  border: 1px solid var(--color-sage-green);
-  border-radius: 4px;
 }
 
 .watercolor-label {
