@@ -17,23 +17,29 @@
   /* Primary Colors */
   --color-forest-green: #3a4a3b;
   --color-sage-green: #7d9685;
+  --color-sage-green-light: #e8f2ef;
   --color-pale-blue: #e8f1f2;
   --color-soft-white: #fcfbf9;
   --color-parchment: #f4f1ea;
-  --color-text-primary: #2c3e50;
-  --color-text-secondary: #5d6d7e;
+  --color-text-primary: #2c3e2e;
+  /* Darker Forest Green for better contrast */
+  --color-text-secondary: #5c6f5e;
 
   /* Typography */
-  --font-script: 'Beatrica', 'Brush Script MT', cursive;
-  --font-serif: 'Cormorant Garamond', 'Times New Roman', serif;
-  --font-sans: 'Inter', sans-serif;
+  --font-script: 'Beatrica', cursive;
+  --font-serif: 'Cormorant Garamond', serif;
 }
 
 body {
-  background-color: var(--color-soft-white);
-  color: var(--color-text-primary);
-  font-family: var(--font-serif);
   margin: 0;
+  padding: 0;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  /* Increased from default 400 for better readability */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--color-text-primary);
+  background-color: var(--color-soft-white);
   line-height: 1.6;
 }
 
@@ -45,12 +51,21 @@ h4,
 h5,
 h6 {
   font-family: var(--font-serif);
-  font-weight: normal;
+  font-weight: 600;
   color: var(--color-forest-green);
+  margin: 0;
 }
 
 .font-script {
   font-family: var(--font-script);
+  font-weight: 400;
+  font-size: 4rem;
+  color: black;
+}
+
+.text-serif {
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
 }
 
 .text-center {

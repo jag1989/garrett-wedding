@@ -32,6 +32,7 @@ defineEmits<{
 
 <style scoped lang="scss">
 .watercolor-input-group {
+  margin-top: 1.5rem;
   margin-bottom: 1.5rem;
   display: flex;
   flex-direction: column;
@@ -70,7 +71,7 @@ defineEmits<{
   border-bottom: 2px solid var(--color-sage-green);
   padding: 0.5rem 0;
   font-family: var(--font-sans); /* Input text should be readable */
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: var(--color-text-primary);
   transition: all 0.3s ease;
   border-radius: 0; 

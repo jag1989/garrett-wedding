@@ -152,115 +152,174 @@ const updateAccommodation = async (choice: boolean) => {
 
 <template>
   <div class="home-container">
-    <!-- Hero Section -->
-    <section class="hero-section text-center">
-      <h1 class="names font-script">Katie and Jonathan</h1>
-      <div class="details text-serif">
-        <p class="date">14th August 2027</p>
-        <p class="venue">Dovecote Barns, York</p>
-      </div>
-      <p class="intro-text text-serif">
-        We are so excited to celebrate our special day with you.
-        Please let us know if you can make it.
-      </p>
-    </section>
+    <div class="main-content">
+      <!-- Hero Section -->
+      <section class="hero-section text-center">
+        <h1 class="names font-script">Katie and Jonathan</h1>
+        <div class="details text-serif">
+          <p class="date">14th August 2027</p>
+          <p class="venue">Dovecote Barns, York</p>
+        </div>
+      </section>
 
-    <!-- RSVP Form -->
-    <section v-if="!isSubmitted" class="rsvp-section container">
-      
-      <form @submit.prevent="handleSubmit" class="rsvp-form" novalidate>
+      <!-- Info Section -->
+      <section class="info-section container">
+        <h2 class="section-title text-center font-serif">What You Need To Know</h2>
         
-        <div class="form-group" :class="{ 'has-error': errors.guest }">
-          <label class="watercolor-label">Guest Name</label>
-          <select 
-            v-model="selectedGuestId" 
-            class="watercolor-select text-serif"
-            :class="{ 'is-placeholder': !selectedGuestId }"
-          >
-            <option value="" disabled>Select your name</option>
-            <option v-for="guest in guests" :key="guest.id" :value="guest.id">
-              {{ guest.name }}
-            </option>
-          </select>
-          <span v-if="errors.guest" class="error-message">{{ errors.guest }}</span>
+        <div class="card-style">
+          <div class="info-item">
+            <span class="info-label">Ceremony:</span>
+            <span class="info-text">All Saints Church, Church End, Cawood, Selby, YO8 3SN - <a href="https://maps.app.goo.gl/YP2Qv3ud4fgrq5az9" target="_blank">Google Maps</a></span>
+          </div>
+
+          <div class="info-item">
+            <span class="info-label">Venue:</span>
+            <span class="info-text">Dovecote Barns, Manor Farm, Kelfield, York, YO19 6RG - <a href="https://maps.app.goo.gl/MCUPMnhB7EFe5oFt7" target="_blank">Google Maps</a></span>
+          </div>
           
-          <div v-if="existingReservation" class="existing-rsvp-message">
-            <p>We already have your response, but if you'd like to change your details please continue.</p>
+          <div class="info-item">
+            <span class="info-label">Age Policy:</span>
+            <span class="info-text">This is a 17+ celebration, with exceptions for immediate family members</span>
+          </div>
+          
+          <div class="info-item">
+            <span class="info-label">Timeline:</span>
+            <span class="info-text">To follow</span>
           </div>
         </div>
+      </section>
 
-        <WatercolorInput 
-          id="email" 
-          label="Email Address" 
-          v-model="email" 
-          type="email" 
-          :error="errors.email"
-        />
+      <section class="info-section container">
+        <h2 class="section-title text-center font-serif">Register Your Details</h2>
 
-        <WatercolorInput 
-          id="phone" 
-          label="Phone Number" 
-          v-model="phone" 
-          type="tel" 
-          required
-          :error="errors.phone"
-        />
-        
-        
+        <div class="card-style">
+          <p v-if="!isSubmitted" class="text-center text-serif" style="margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+            Please provide your contact information so we can send you your formal invitation and keep you updated about our special day.
+          </p>
 
-        <button type="submit" class="btn-primary">Submit RSVP</button>
-      </form>
-    </section>
+          <section v-if="!isSubmitted" class="rsvp-section container">
+            <!-- RSVP Form -->
+            <form @submit.prevent="handleSubmit" novalidate>
+              
+              <div class="form-group" :class="{ 'has-error': errors.guest }">
+                <label class="watercolor-label">Guest Name</label>
+                <select 
+                  v-model="selectedGuestId" 
+                  class="watercolor-select text-serif"
+                  :class="{ 'is-placeholder': !selectedGuestId }"
+                >
+                  <option value="" disabled>Select your name</option>
+                  <option v-for="guest in guests" :key="guest.id" :value="guest.id">
+                    {{ guest.name }}
+                  </option>
+                </select>
+                <span v-if="errors.guest" class="error-message">{{ errors.guest }}</span>
+                
+                <div v-if="existingReservation" class="existing-rsvp-message">
+                  <p>We already have your response, but if you'd like to change your details please continue.</p>
+                </div>
+              </div>
 
-    <!-- Post-Submission Views -->
-    <section v-else class="confirmation-section container text-center">
-      <div v-if="showWeekendDetails" class="weekend-details">
-        <h2 class="font-script">Wonderful!</h2>
-        <p class="text-serif">We look forward to celebrating with you.</p>
-        
-        <div class="weekend-card">
-          <h3 class="font-serif">Weekend Details</h3>
-          <p>We would love for you to stay with us for the weekend.</p>
-          <p><strong>Accommodation:</strong> On-site glamping is available.</p>
-          
-          <div v-if="accommodationSelection === null" class="accommodation-options">
-            <p>Would you like to book a spot?</p>
-            <div class="button-group">
-              <button @click="updateAccommodation(true)" class="btn-primary">Yes, please</button>
-              <button @click="updateAccommodation(false)" class="btn-secondary">No, thank you</button>
+              <WatercolorInput 
+                id="email" 
+                label="Email Address" 
+                v-model="email" 
+                type="email" 
+                :error="errors.email"
+              />
+
+              <WatercolorInput 
+                id="phone" 
+                label="Phone Number" 
+                v-model="phone" 
+                type="tel" 
+                required
+                :error="errors.phone"
+              />
+              
+              
+
+              <button type="submit" class="btn-primary">Send me an invite</button>
+            </form>
+          </section>
+
+          <!-- Post-Submission Views -->
+          <section v-else class="confirmation-section container text-center">
+            <div v-if="showWeekendDetails" class="weekend-details">
+              <h2 class="font-script">Wonderful!</h2>
+              <p class="text-serif">We look forward to celebrating with you.</p>
+              
+              <div class="weekend-card">
+                <h3 class="font-serif">Weekend Details</h3>
+                <p>We would love for you to stay with us for the weekend.</p>
+                <p><strong>Accommodation:</strong> On-site glamping is available.</p>
+                
+                <div v-if="accommodationSelection === null" class="accommodation-options">
+                  <p>Would you like to book a spot?</p>
+                  <div class="button-group">
+                    <button @click="updateAccommodation(true)" class="btn-primary">Yes, please</button>
+                    <button @click="updateAccommodation(false)" class="btn-secondary">No, thank you</button>
+                  </div>
+                </div>
+                
+                <div v-else class="accommodation-confirmation">
+                  <p v-if="accommodationSelection">
+                    Fantastic! We've marked you down for a spot.
+                  </p>
+                  <p v-else>
+                    No problem. Let us know if you change your mind.
+                  </p>
+                  <button @click="accommodationSelection = null" class="btn-secondary">
+                    Change Selection
+                  </button>
+                </div>
+              </div>
             </div>
-          </div>
-          
-          <div v-else class="accommodation-confirmation">
-            <p v-if="accommodationSelection">
-              Fantastic! We've marked you down for a spot.
-            </p>
-            <p v-else>
-              No problem. Let us know if you change your mind.
-            </p>
-            <button @click="accommodationSelection = null" class="btn-secondary">
-              Change Selection
-            </button>
-          </div>
-        </div>
-      </div>
 
-      <div v-else class="thank-you">
-        <h2 class="font-script">Thank You</h2>
-        <p class="text-serif">
-          We can't wait to see you!
-        </p>
-        <p class="text-serif">We will be in touch with more details soon.</p>
-      </div>
-    </section>
+            <div v-else class="thank-you">
+              <h2 class="font-script">Thank You</h2>
+              <p class="text-serif">We will be in touch with more details soon</p>
+            </div>
+
+          </section>
+        </div>
+      </section>
+    </div> <!-- End main-content -->
+    
+    <footer class="site-footer"></footer>
   </div>
 </template>
 
 <style scoped lang="scss">
 .home-container {
   min-height: 100vh;
-  padding-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
   background: linear-gradient(to bottom, var(--color-soft-white) 0%, #eef6f7 100%);
+}
+
+.main-content {
+  flex: 1;
+  padding-bottom: 10rem;
+  margin: 0 1rem;
+  z-index: 1;
+}
+
+.site-footer {
+  position: fixed;
+  bottom: 0;
+  z-index: 0;
+  width: 100%;
+  height: 250px;
+  background-image: url('/images/watercolor-forest.png');
+  background-size: 400px auto; /* Repeats every 400px as requested */
+  background-repeat: repeat-x;
+  background-position: center bottom;
+  margin-top: auto;
+  
+  /* Fade out the top of the footer image to blend */
+  mask-image: linear-gradient(to top, black 50%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to top, black 50%, transparent 100%);
 }
 
 .hero-section {
@@ -273,7 +332,6 @@ const updateAccommodation = async (choice: boolean) => {
     font-size: 5rem;
     line-height: 1;
     margin-bottom: 1rem;
-    color: black;
   }
   
   .date {
@@ -294,24 +352,32 @@ const updateAccommodation = async (choice: boolean) => {
   }
 }
 
-.rsvp-form {
-  max-width: 500px;
-  margin: 0 auto;
-  background: rgba(255,255,255,0.5);
-  padding: 2rem;
+/* Shared Card Styles */
+.card-style {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 2.5rem;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  box-shadow: 0 10px 30px -5px rgba(58, 74, 59, 0.15); /* Soft, deep green shadow */
+  border: 2px solid var(--color-sage-green);
+  margin-bottom: 3rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.rsvp-form {
+  @extend .card-style;
+  margin-top: 2rem;
 }
 
 .watercolor-select {
   width: 100%;
-  padding: 0.5rem;
+  padding: 0.5rem 0.5rem 0.5rem 0;
   padding-right: 2rem; /* Make room for custom arrow */
   border: none;
   border-bottom: 2px solid var(--color-sage-green);
   background-color: transparent;
-  font-size: 1rem;
-  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
   border-radius: 0; /* Important for iOS */
   
   /* Remove default arrow */
@@ -346,20 +412,6 @@ const updateAccommodation = async (choice: boolean) => {
   margin-top: 2rem;
   border: 1px solid var(--color-sage-green);
   border-radius: 4px;
-}
-
-.radio-group {
-  margin: 1.5rem 0;
-  
-  .radio-options {
-    display: flex;
-    gap: 2rem;
-    margin-top: 0.5rem;
-    
-    label {
-      cursor: pointer;
-    }
-  }
 }
 
 .watercolor-label {
@@ -399,7 +451,6 @@ const updateAccommodation = async (choice: boolean) => {
 }
 
 
-
 .button-group {
   display: flex;
   gap: 1rem;
@@ -432,7 +483,7 @@ const updateAccommodation = async (choice: boolean) => {
 .existing-rsvp-message {
   margin-top: 0.5rem;
   padding: 0.75rem;
-  background-color: var(--color-pale-blue); /* or a soft info color */
+  background-color: var(--color-sage-green-light); /* or a soft info color */
   border-radius: 4px;
   border-left: 3px solid var(--color-forest-green);
   
@@ -442,6 +493,53 @@ const updateAccommodation = async (choice: boolean) => {
     font-family: var(--font-serif);
     color: var(--color-forest-green);
     font-style: italic;
+  }
+}
+.bird-accent {
+  margin-bottom: 1.5rem;
+  
+  .bird-img {
+    width: 120px;
+    height: auto;
+    opacity: 0.9;
+    mix-blend-mode: multiply; /* Helps it blend like real watercolor */
+  }
+}
+
+.section-title {
+  font-size: 2.2rem;
+  color: var(--color-forest-green);
+  margin-bottom: 2rem;
+}
+
+.info-item {
+  margin-bottom: 1.5rem;
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--color-text-primary);
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.info-label {
+  font-weight: bold;
+  color: var(--color-forest-green);
+  margin-right: 0.5rem;
+}
+
+.info-text a {
+  color: var(--color-forest-green);
+  text-decoration: none;
+  border-bottom: 2px solid var(--color-sage-green);
+  font-weight: 600;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    color: var(--color-text-primary);
+    border-bottom-color: var(--color-forest-green);
   }
 }
 </style>
