@@ -155,9 +155,9 @@ const updateAccommodation = async (choice: boolean) => {
     <div class="main-content">
       <!-- Hero Section -->
       <section class="hero-section text-center">
-        <img src="/images/bird-flourish-1.png" class="header-flourish bird-1" alt="" />
-        <img src="/images/bird-flourish-2.png" class="header-flourish bird-2" alt="" />
-        <img src="/images/bird-flourish-3.png" class="header-flourish bird-3" alt="" />
+        <img src="/images/tmp/bird-flourish-1.svg" class="header-flourish bird-1" alt="" />
+        <img src="/images/tmp/bird-flourish-2.svg" class="header-flourish bird-2" alt="" />
+        <img src="/images/tmp/bird-flourish-3.svg" class="header-flourish bird-3" alt="" />
         <h1 class="names font-script">Katie and Jonathan</h1>
         <div class="details text-serif">
           <p class="date">14th August 2027</p>
