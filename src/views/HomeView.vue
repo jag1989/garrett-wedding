@@ -242,7 +242,7 @@ const updateAccommodation = async (choice: boolean) => {
               
               
 
-              <button type="submit" class="btn-primary">Send me an invite</button>
+              <button type="submit" class="btn-primary">Please send me an invitation & keep me updated</button>
             </form>
           </section>
 

@@ -83,6 +83,9 @@ h6 {
   font-size: 1.1rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin: 0 auto;
+  display: block;
+  width: 100%;
 
   &:hover {
     background-color: color.adjust(#3a4a3b, $lightness: 10%);
