@@ -172,12 +172,12 @@ const updateAccommodation = async (choice: boolean) => {
         <div class="card-style">
           <div class="info-item">
             <span class="info-label">Ceremony:</span>
-            <span class="info-text">All Saints Church, Church End, Cawood, Selby, YO8 3SN - <a href="https://maps.app.goo.gl/YP2Qv3ud4fgrq5az9" target="_blank">Google Maps</a></span>
+            <span class="info-text">All Saints Church, Church End, Cawood, Selby, YO8 3SN - <a href="https://maps.app.goo.gl/MCUPMnhB7EFe5oFt7" target="_blank">Google Maps</a></span>
           </div>
 
           <div class="info-item">
             <span class="info-label">Venue:</span>
-            <span class="info-text">Dovecote Barns, Manor Farm, Kelfield, York, YO19 6RG - <a href="https://maps.app.goo.gl/MCUPMnhB7EFe5oFt7" target="_blank">Google Maps</a></span>
+            <span class="info-text">Dovecote Barns, Manor Farm, Kelfield, York, YO19 6RG - <a href="https://maps.app.goo.gl/YP2Qv3ud4fgrq5az9" target="_blank">Google Maps</a></span>
           </div>
           
           <div class="info-item">
@@ -497,6 +497,8 @@ const updateAccommodation = async (choice: boolean) => {
   font-size: 1.1rem;
   cursor: pointer;
   transition: all 0.3s ease;
+  display: block;
+  width: 100%;
 
   &:hover {
     background-color: rgba(58, 74, 59, 0.1);
