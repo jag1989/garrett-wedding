@@ -324,7 +324,6 @@ const updateAccommodation = async (choice: boolean) => {
 .hero-section {
   padding: 6rem 1rem 4rem;
   position: relative; /* For absolute positioning of flourishes */
-  background-image: url('/path/to/watercolor-bg-placeholder.png'); /* To be added */
   background-size: cover;
   background-position: center;
   
